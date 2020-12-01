@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: weatherserver
+  namespace: istio-demo
+spec:
+  selector:
+    app: weatherserver
+    type: pod
+    version: v1
+  ports:
+  - port: 9001
+    targetPort: 8091
