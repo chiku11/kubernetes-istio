@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: clientserver
-        image: clientserver:2.0
+        image: clientserver:1.0
         resources:
           limits:
             memory: "128Mi"
