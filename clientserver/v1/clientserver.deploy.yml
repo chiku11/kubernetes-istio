@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clientserver
+  namespace: istio-demo
+  labels:    
+    type: deployment
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: clientserver
+      type: pod
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: clientserver
+        type: pod
+        version: v1
+    spec:
+      containers:
+      - name: clientserver
+        image: clientserver:2.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8090
