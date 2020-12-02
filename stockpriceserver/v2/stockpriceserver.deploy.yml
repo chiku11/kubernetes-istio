@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockpricerserver
+  namespace: istio-demo
+  labels:
+    type: deployment
+    version: v2
+spec:
+  selector:
+    matchLabels:
+      app: stockpricerserver
+      type: pod
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: stockpricerserver
+        type: pod
+        version: v2
+    spec:
+      containers:
+      - name: stockpricerserver
+        image: stockpricerserver:2.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8091
